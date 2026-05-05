@@ -122,7 +122,7 @@ When the user returns and pastes the URL again, the probe sequence runs from the
 
 Triggered when the probe sequence shows `gh auth ✓` + `template access ✓` + `<user>/thinking-living doesn't exist yet`.
 
-At this point, fetch the template's BOOTSTRAP.md and execute Phases D-J:
+At this point, fetch the template's BOOTSTRAP.md and execute Phases D-J. **Use `gh repo clone` — not `raw.githubusercontent.com` URLs.** The template is private; raw URLs return 404 even when the user has gh-authenticated access (raw URLs require query-param tokens, which a naive WebFetch / curl doesn't provide). The clone path uses the gh auth token transparently and works:
 
 ```bash
 gh repo clone henrikpz/thinking-living-template /tmp/thinking-living-template-temp 2>/dev/null
@@ -131,13 +131,9 @@ cat /tmp/thinking-living-template-temp/BOOTSTRAP.md
 # for the concrete Phase D-J commands
 ```
 
-**Or simpler:** since the user now has template access via gh, just fetch via raw GitHub URLs:
+(If the template is ever made public in a future release, raw URLs become a viable shortcut. Until then, stick with clone.)
 
-- `https://raw.githubusercontent.com/henrikpz/thinking-living-template/main/BOOTSTRAP.md`
-- `https://raw.githubusercontent.com/henrikpz/thinking-living-template/main/.claude/bootstrap/bootstrap-mac.md`
-- `https://raw.githubusercontent.com/henrikpz/thinking-living-template/main/.claude/bootstrap/bootstrap-mac-check.sh`
-
-Read those, execute Phases D-J. The phases summary:
+Read the cloned files, execute Phases D-J. The phases summary:
 
 - **D** — `gh repo create <user>/thinking-living --template henrikpz/thinking-living-template --private`
 - **E** — `gh project create --owner @me --title "thinking-living"`, discover field IDs via `gh project field-list` + `gh api graphql`
