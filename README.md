@@ -2,7 +2,7 @@
 
 > ## ⚡ Quick start — for the impatient
 >
-> Once you have **Claude Code Desktop** installed and signed in (Steps 1–3 below), copy this entire block and paste it into a fresh Claude Code Desktop chat:
+> Once **Claude Code Desktop** is installed, signed in, and you've picked a working folder (Steps 1–4 below), copy this entire block and paste it into a fresh Claude Code Desktop chat:
 >
 > ```
 > Please fetch and follow the bootstrap instructions at:
@@ -71,7 +71,19 @@ You do **not** need: any prior coding experience, Homebrew, git, or any develope
 - [ ] The sign-in flow uses **email confirmation** — Anthropic sends you an email with a sign-in link. **Check your spam / junk folder** if the email doesn't appear in your inbox within a minute. Anthropic emails sometimes land there.
 - [ ] Click the link in the email. The app should activate.
 
-### Step 4 — Paste this prompt into a fresh Claude Code chat
+### Step 4 — Pick a working folder for Code Desktop
+
+This is easy to miss: **Claude Code Desktop won't let you send messages until you've selected a working folder.** The chat box stays inactive until you do. The convention is to use a folder called `Develop` in your home directory.
+
+- [ ] In Claude Code Desktop, find the **folder selector** at the top of the window (above the chat input). It usually says something like "Select a folder" or shows a folder icon.
+- [ ] Click it. A folder picker opens.
+- [ ] Navigate to your **home folder** (the one with your name on Mac, e.g. `/Users/<your-name>/`).
+- [ ] If you don't already have a folder called **`Develop`** there: create one. Most folder pickers have a "New Folder" button. Name it exactly `Develop` (capital D, no spaces).
+- [ ] Select the `Develop` folder. The chat box should now be active.
+
+> **Why `Develop`?** The bootstrap will create your `thinking-living` repository inside `~/Develop/thinking-living/`. Selecting `~/Develop/` as the working folder means Code Desktop is positioned in the right place for the bootstrap to work. Other folder names work too, but the bootstrap is written assuming this one — easier to follow the convention than improvise.
+
+### Step 5 — Paste the bootstrap prompt into a fresh Claude Code chat
 
 In Claude Code Desktop, **start a new chat** (a fresh, empty conversation). Then **copy and paste this whole block** into the chat box and send:
 
