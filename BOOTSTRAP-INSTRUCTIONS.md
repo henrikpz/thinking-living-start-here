@@ -115,13 +115,34 @@ Phase A through Phase C of the bootstrap. The platform-specific commands are in:
 
 **Heads up the user before brew install runs:** Homebrew's installer will trigger a macOS dialog asking permission to install **Xcode Command Line Tools** (which provides `git` and other build tools). The dialog appears, the user clicks "Install," and the download takes ~5–10 minutes on first run. Tell the user this is expected: *"You're about to see a popup from your Mac asking to install Xcode Command Line Tools. Click 'Install'; it's a one-time download (~600MB) that takes a few minutes. We'll wait."*
 
-Then:
+**Where to run the Homebrew install command:** *Not* in Code Desktop's Bash tool — the install asks for the user's Mac password (sudo) interactively, and Code Desktop's Bash tool can't relay password input safely. The user runs the command in **Terminal.app**, manually. Walk them through it — most thinking-living users have never opened Terminal before. Use the templated language below (paraphrase, don't recite verbatim):
 
-1. **Install Homebrew** (handles Xcode CLT prompt as a side effect):
+> *"This next step needs to run in your Mac's **Terminal app** — not in our chat here. Terminal asks for your Mac password, and that conversation has to happen between you and Terminal directly. Here's exactly what to do:*
+>
+> *1. **Open Terminal.** Press **`⌘ Cmd + Space`** to open Spotlight (the search bar). Type **`Terminal`** and press **`Enter`**. A black or dark window opens with a text prompt — that's Terminal.*
+>
+> *2. **Copy this command** (I'll show it in the chat — click the copy button in the upper-right corner of the code block, or select-all and `⌘ Cmd + C`).*
+>
+> *3. **Click in the Terminal window**, then paste with **`⌘ Cmd + V`**. The command appears in Terminal.*
+>
+> *4. **Press `Enter`** to run it.*
+>
+> *5. **Terminal will ask for your Mac password** — the one you use to log into your Mac. Type it. **Important: you won't see anything as you type — no dots, no asterisks, no characters.** That's normal; Terminal hides passwords on purpose. Just type and press `Enter` when done.*
+>
+> *6. **Wait.** The install takes 5–10 minutes. You'll see lots of text scrolling by — that's normal, you don't need to read or react to it. When it's done, you'll see a regular prompt again (your username followed by a `$` or `%` sign and a blinking cursor).*
+>
+> *7. **Tell me 'done' or paste the last few lines back here** when it finishes, so I can verify and continue."*
+
+After this walkthrough, show the user the actual command in a code block:
+
+1. **Install Homebrew** (the user runs this in Terminal):
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
-2. **Add brew to PATH** (Apple Silicon vs Intel):
+
+   Wait for the user to confirm done before proceeding. After they confirm, re-probe (`which brew`) from Code Desktop's Bash to verify brew is now on the system. If it isn't, surface and stop — something went wrong with the install; ask the user to paste any error output back into the chat.
+
+2. **Add brew to PATH** (Apple Silicon vs Intel) — Claude can run this in Code Desktop's Bash directly, no Terminal needed (no sudo):
    ```bash
    if [ -x /opt/homebrew/bin/brew ]; then
        eval "$(/opt/homebrew/bin/brew shellenv)"
