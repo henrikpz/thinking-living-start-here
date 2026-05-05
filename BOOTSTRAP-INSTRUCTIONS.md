@@ -90,9 +90,39 @@ Phase A through Phase C of the bootstrap. The platform-specific commands are in:
 
 #### Phase A — Toolchain prerequisites
 
-Probe: `which brew gh git python3 jq` (each); install missing tools via `brew install <tool>`. Install Homebrew first if absent (`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`). Set up PATH for Apple Silicon (`/opt/homebrew/bin`) or Intel (`/usr/local/bin`).
+**Default assumption: the user is zero-dev.** No Homebrew, no git, no python3, no jq, no gh — none of it. Start with installing Homebrew first; everything else installs through brew. Don't waste time probing optimistically — the expected case for new template users is "nothing installed yet." If a probe shows something IS installed (rare; e.g. user has done some Mac dev work before), skip that install and continue.
 
-Verify all 5 tools (`brew gh git python3 jq`) report a version.
+**Heads up the user before brew install runs:** Homebrew's installer will trigger a macOS dialog asking permission to install **Xcode Command Line Tools** (which provides `git` and other build tools). The dialog appears, the user clicks "Install," and the download takes ~5–10 minutes on first run. Tell the user this is expected: *"You're about to see a popup from your Mac asking to install Xcode Command Line Tools. Click 'Install'; it's a one-time download (~600MB) that takes a few minutes. We'll wait."*
+
+Then:
+
+1. **Install Homebrew** (handles Xcode CLT prompt as a side effect):
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+2. **Add brew to PATH** (Apple Silicon vs Intel):
+   ```bash
+   if [ -x /opt/homebrew/bin/brew ]; then
+       eval "$(/opt/homebrew/bin/brew shellenv)"
+       echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+   elif [ -x /usr/local/bin/brew ]; then
+       eval "$(/usr/local/bin/brew shellenv)"
+       echo 'eval "$(/usr/local/bin/brew shellenv)"' >> ~/.zprofile
+   fi
+   ```
+3. **Install the rest via brew** (only the missing ones — re-probing each before install is fine):
+   ```bash
+   brew install gh
+   brew install git           # macOS bundles git via Xcode CLT but a brew git is more current
+   brew install python3
+   brew install jq
+   ```
+4. **Verify all 5 tools report a version:**
+   ```bash
+   brew --version && gh --version && git --version && python3 --version && jq --version
+   ```
+
+If any of the 5 fails after the install attempt, surface verbatim and stop. Phase A is foundational; subsequent phases will fail in confusing ways without it.
 
 #### Phase B — GitHub account + 2FA + SSH key
 
