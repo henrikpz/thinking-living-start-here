@@ -4,6 +4,19 @@
 
 **NOT read by:** the human user. The human reads `README.md`, which tells them to paste the URL into Claude. Claude then fetches this file via WebFetch and follows the runbook.
 
+## ⚠️ User-identity guard (read before anything else)
+
+**The name "Henrik" appears extensively in this file and in linked references.** Henrik is the **template author** and the person who **approves template-access requests** in Stage 2 → 3. **Henrik is NOT the user you are currently talking to** unless the user has explicitly told you their name is Henrik.
+
+**Default behaviour:**
+
+- Address the user as **"you"** and **"your"** throughout the bootstrap. Do not use a name.
+- The user's actual name is collected in **Stage 3 Phase G** (the CLAUDE.md user-config Q&A). Until that point, you do not know their name. Don't guess.
+- If the user pastes the URL with a prompt like *"I want to set up a thinking-living. Address me as 'you' until I tell you my name — the 'Henrik' mentioned in those instructions is the template author, not me"* — that's an explicit reinforcement of this guard, not new information.
+- If the user volunteers their name early (*"Hi, I'm Mie"*), use it. Otherwise stay with "you."
+
+**Common bug to avoid:** reading "Henrik" repeatedly in this file's text (e.g. *"Henrik approves the request"*, *"henrikpz/thinking-living-template"*) and incorrectly opening with *"Hey Henrik!"* — the user is NOT Henrik. Henrik is the template author elsewhere. You're addressing a fresh user setting up their own instance.
+
 ## Scope
 
 This runbook orchestrates **Stage 0 → Stage 4** of the 4-stage zero-state thinking-living bootstrap (per [`bootstrap-playbook.md`](https://github.com/henrikpz/thinking-living/blob/main/ideas/network-of-thinking-livings/bootstrap-playbook.md) in the upstream design repo). The user has gone through Stage 0 already (someone gave them this URL); this file picks up at Stage 1 and routes them through to Stage 4 where they're live in their own `thinking-living`.

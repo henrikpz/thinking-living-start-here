@@ -41,31 +41,46 @@ You do **not** need: any prior coding experience, Homebrew, git, or any develope
 
 > **Why Pro?** The next steps need a version of Claude that can install software and read files on your computer (Claude Code Desktop). That feature is Pro-only. The cost is around 200 DKK / 20 USD per month.
 
-### Step 2 — Paste this URL into a fresh Claude conversation
+### Step 2 — Install Claude Code Desktop
 
-- [ ] In Claude.ai, start a **new conversation** (any blank chat).
-- [ ] Copy this URL:
+- [ ] Go to **[claude.com/code](https://claude.com/code)** and download Claude Code Desktop for your operating system (Mac / Windows / Linux).
+- [ ] Run the installer (just like installing any other app).
+- [ ] When the installer is done, the app appears in your Applications folder (Mac) or Start menu (Windows).
 
-  ```
-  https://github.com/henrikpz/thinking-living-start-here
-  ```
+> **Note:** Claude Code Desktop is a separate app from claude.ai (which you used in Step 1). Both share the same account and conversation history, but Code Desktop has powers the browser version doesn't — it can install software, read your local files, and talk to GitHub on your behalf. The bootstrap needs Code Desktop, not the browser version.
 
-- [ ] Paste it into the chat box, **send**, and wait.
+### Step 3 — Open Claude Code Desktop and sign in
 
-That's it. Claude will read this repository, figure out what you need to do next, and tell you in plain language. You don't need to read any documentation or remember commands. Claude does that part.
+- [ ] Open **Claude Code Desktop** (the app you just installed).
+- [ ] On first launch, you'll be asked to sign in. Use the **same Claude account** you set up in Step 1 (the one with Pro).
+- [ ] The sign-in flow uses **email confirmation** — Anthropic sends you an email with a sign-in link. **Check your spam / junk folder** if the email doesn't appear in your inbox within a minute. Anthropic emails sometimes land there.
+- [ ] Click the link in the email. The app should activate.
 
-### Step 3 — Answer Claude's questions as they come
+### Step 4 — Paste this prompt into a fresh Claude Code chat
 
-Claude will guide you through:
+In Claude Code Desktop, **start a new chat** (a fresh, empty conversation). Then **copy and paste this whole block** into the chat box and send:
 
-1. **Installing Claude Code Desktop** — a separate app on your Mac (or PC). Claude tells you where to download it from and walks you through signing in.
-2. **Opening Claude Code Desktop and pasting the same URL there.** The Claude in the desktop app can do things browser-Claude can't (read your files, install software, talk to GitHub).
-3. **Setting up GitHub** if you don't already have an account. Claude walks you through signup, two-factor auth, and the SSH-key thing — with no jargon required from you. Just click "yes" when Claude tells you to.
-4. **Asking the person who shared this URL** to grant you access to the template that becomes your `thinking-living`. They'll get an email; they approve. You wait a few minutes.
-5. **A quick personalisation Q&A** — your name, your email, your phone, your preferred sign-off style, etc. Claude asks one question at a time. You type the answer. Claude writes it into the right place.
-6. **You're done.** Claude shows you what you have and you can start using it.
+```
+Please fetch and follow the bootstrap instructions at:
+https://github.com/henrikpz/thinking-living-start-here
 
-That's the whole thing. The complexity is hidden inside Claude's instructions — you just need to keep saying "yes" and answering questions.
+I want to set up my own thinking-living. Address me as "you" until I tell you my name — the "Henrik" mentioned in those instructions is the template author, not me.
+```
+
+That's it. Claude in Code Desktop will fetch the repository, read the runbook, and walk you through everything else step by step. You answer the questions as they come.
+
+### What happens after Step 4 — what to expect
+
+Once Claude has the prompt, it will:
+
+1. **Probe your computer** to see what's already installed (Homebrew, git, GitHub CLI, etc.). For most users (zero-dev), nothing is installed yet — Claude will install it for you.
+2. **Heads-up about Xcode Command Line Tools** — when Claude installs Homebrew on Mac, your Mac will show a popup asking permission to install "Xcode Command Line Tools" (~600 MB, takes 5–10 minutes). Click **Install** when you see this dialog. It's expected and only happens once.
+3. **Walk you through GitHub setup** if you don't have a GitHub account. Claude opens the right pages in your browser, tells you what to click, and waits for you to confirm each step.
+4. **Ask the person who shared this URL** to grant you access to the template that becomes your thinking-living. They'll get an email; they approve. Then Claude continues.
+5. **Personalisation Q&A** — your name, email, phone, sign-off preference, language preference. One question at a time. You type the answer; Claude writes it into the right place.
+6. **You're done.** Claude shows you what you have and you can start using it from any future conversation.
+
+That's the whole flow. The technical complexity is hidden inside Claude's instructions — you just keep answering questions in plain language.
 
 ---
 
