@@ -1,5 +1,20 @@
 # thinking-living — start here
 
+> ## ⚡ Quick start — for the impatient
+>
+> Once you have **Claude Code Desktop** installed and signed in (Steps 1–3 below), copy this entire block and paste it into a fresh Claude Code Desktop chat:
+>
+> ```
+> Please fetch and follow the bootstrap instructions at:
+> https://github.com/henrikpz/thinking-living-start-here
+>
+> I want to set up my own thinking-living. Address me as "you" until I tell you my name — the "Henrik" mentioned in those instructions is the template author, not me.
+> ```
+>
+> If you don't have Code Desktop installed yet, do Steps 1–3 first. The prompt above is what you paste **after** Code Desktop is ready.
+
+---
+
 **Welcome.** Someone you know shared this link with you because they thought you'd benefit from setting up a *thinking-living* of your own.
 
 A thinking-living is a private personal knowledge base — a folder of Markdown files about who you are, who's in your life, and what you're working on — that **Claude reads, edits, and remembers across every conversation**. Each chat builds on the last. Claude drafts your messages in your voice. Suggests things based on what it knows about you. Helps you keep track of the shape of your life without you having to manage anything by hand.
