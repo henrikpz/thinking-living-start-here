@@ -7,10 +7,13 @@ This file exists so a user (or someone helping them) can be pointed at a single 
 Copy this entire block into a fresh Claude Code Desktop chat, then send:
 
 ```
-Please fetch and IMMEDIATELY BEGIN executing the bootstrap instructions at:
-https://github.com/henrikpz/thinking-living-start-here
+I want to set up my own thinking-living. Please read the runbook at
+https://github.com/henrikpz/thinking-living-start-here and walk me through it.
 
-I want to set up my own thinking-living. Begin right now — don't ask me to confirm; pasting this prompt IS my consent. Address me as "you" until I tell you my name — the "Henrik" mentioned in those instructions is the template author, not me.
+- First time, not technical.
+- Call me "you" until I tell you my name — the "Henrik" in the runbook is
+  the template author, not me.
+- Confirm with me as you go; I'd rather take an extra beat than have you guess.
 ```
 
 ## Direct raw URL for Claude

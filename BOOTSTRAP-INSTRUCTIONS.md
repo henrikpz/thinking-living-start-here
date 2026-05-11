@@ -1,16 +1,8 @@
 # BOOTSTRAP-INSTRUCTIONS.md — Claude-executable runbook
 
-**Read by:** Claude, when the user pastes the URL of this repository into a Claude session.
+**Audience:** Claude, when a new user has pasted the start-here URL into a Claude Code Desktop session. The human reads `README.md`; Claude follows the runbook here.
 
-**NOT read by:** the human user. The human reads `README.md`, which tells them to paste the URL into Claude. Claude then fetches this file via WebFetch and follows the runbook.
-
-## ⚡ Action guard (read before anything else)
-
-**Proceed directly. Do not double-consult.** When you fetch this file because the user pasted a prompt asking you to do so, **the paste IS the consent**. Do not ask the user *"would you like me to walk through the setup?"* or *"shall I fetch X and proceed?"* — they've already said yes. Begin executing the bootstrap immediately upon reading this file.
-
-The general *"consult on approach before non-trivial work"* pattern is correctly **overridden** for the bootstrap-as-a-whole — that's the approach the user has already explicitly consented to via their paste. Within the bootstrap, surface decisions where the user genuinely has a choice (sign-off preferences, language, optional steps, name during Phase G). Do NOT surface a meta-question about whether to begin.
-
-The first concrete action is the **observable-state probe** below. Run it; route to the appropriate stage; proceed.
+**How to use this file:** Read it top-to-bottom. The probe sequence below routes to the right stage based on the user's current system state. Each stage describes what to do; confirm with the user at the points the stage calls out (and any other point where you'd genuinely benefit from a check-in), and proceed step by step otherwise. The user has set up this bootstrap deliberately — your job is to execute the runbook clearly, narrate what's happening (per privacy-by-narration), and surface decisions where the user has a real choice.
 
 ## ⚠️ User-identity guard (read before anything else)
 
